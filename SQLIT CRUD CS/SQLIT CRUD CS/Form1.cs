@@ -61,17 +61,29 @@ namespace SQLIT_CRUD_CS
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-
+            string txtQuery = "insert into tbapps (ID,Name) values ('" + textBox1.Text + "','"+textBox2.Text+"')";
+            ExecuteQuerry(txtQuery);
+            LoadData();
         }
 
         private void btn_edit_Click(object sender, EventArgs e)
         {
-
+            string txtQuery = "update tbapps set Name = '" + textBox2.Text + "' where ID='"+textBox1.Text+"'";
+            ExecuteQuerry(txtQuery);
+            LoadData();
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            string txtQuery = "delete from tbapps where ID = '" + textBox1.Text + "'";
+            ExecuteQuerry(txtQuery);
+            LoadData();
+        }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+            textBox2.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
         }
     }
 }
